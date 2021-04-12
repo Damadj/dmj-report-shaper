@@ -17,12 +17,7 @@ public class ExcelLogic {
     public List<CRMReport> parseCompaniesReport(String filePath) {
         List<CRMReport> result = new ArrayList<>();
         TextFormatter formatter = new TextFormatter();
-        try {
-
-            FileInputStream excelFile = new FileInputStream(filePath);
-
-            Workbook workbook = new XSSFWorkbook(excelFile);
-
+        try (FileInputStream excelFile = new FileInputStream(filePath); Workbook workbook = new XSSFWorkbook(excelFile)) {
             Sheet datatypeSheet = workbook.getSheetAt(0);
             for (Row nextRow : datatypeSheet) {
                 if (nextRow.getRowNum() != 0) {
@@ -41,10 +36,6 @@ public class ExcelLogic {
                     result.add(report);
                 }
             }
-
-            workbook.close();
-            excelFile.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,11 +44,11 @@ public class ExcelLogic {
 
     public void shapeFinalReport(String filePath, List<CRMReport> reports) {
 
-        try {
-            FileInputStream excelFile = new FileInputStream(filePath);
-            Workbook workbook = new XSSFWorkbook(excelFile);
-            Sheet sheet = workbook.getSheetAt(0);
+        try (FileInputStream excelFile = new FileInputStream(filePath);
+             Workbook workbook = new XSSFWorkbook(excelFile);
+             FileOutputStream outFile = new FileOutputStream(filePath)) {
 
+            Sheet sheet = workbook.getSheetAt(0);
             for (Row row : sheet) {
                 if (row.getRowNum() != 0) {
 
@@ -77,21 +68,17 @@ public class ExcelLogic {
                     }
                 }
             }
-            FileOutputStream outFile = new FileOutputStream(filePath);
             workbook.write(outFile);
-            outFile.close();
-            workbook.close();
-            excelFile.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void shapeMonthlyReport(String filePath, String month) {
-        try {
-            FileInputStream excelFile = new FileInputStream(filePath);
-            Workbook workbook = new XSSFWorkbook(excelFile);
+        try ( FileInputStream excelFile = new FileInputStream(filePath);
+              Workbook workbook = new XSSFWorkbook(excelFile);
+              FileOutputStream outFile = new FileOutputStream(filePath.substring(0, filePath.indexOf(".")) + "_" + month + ".xlsx")) {
+
             Sheet sheet = workbook.getSheetAt(0);
             boolean isRemovable = false;
 
@@ -119,11 +106,8 @@ public class ExcelLogic {
                     }
                 }
             }
-            FileOutputStream outFile = new FileOutputStream(filePath.substring(0, filePath.indexOf(".")) + "_" + month + ".xlsx");
+
             workbook.write(outFile);
-            outFile.close();
-            workbook.close();
-            excelFile.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
