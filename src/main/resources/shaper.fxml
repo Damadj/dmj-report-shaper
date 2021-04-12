@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="659.0" maxWidth="844" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="315.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dmj.report.shaper.controller.ShaperController">
+   <children>
+      <Polygon layoutY="310.0" points="315.0, 10.0, 0.0, 10.0, 0.0, -181.0, 0.0, -310.0, 315.0, -310.0" stroke="BLACK" strokeType="INSIDE">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#f87000" />
+                  <Stop color="#0003ff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Polygon>
+      <TabPane prefHeight="320.0" prefWidth="315.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Отчет">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="167.0" prefWidth="263.0">
+                     <children>
+                        <Button fx:id="btnFirstFile" layoutX="127.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="40.0" prefWidth="40.0" styleClass="buttonInfo" stylesheets="@css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="125.0" layoutY="122.0">
+                                 <Image url="icons/folder1.png" />
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                  <!--      <Polygon layoutX="50.0" layoutY="60.0" points="-50.0, 73.0, 91.0, -60.0, -50.0, -60.0" stroke="BLACK" strokeType="INSIDE" />-->
+                        <Button fx:id="btnSecondFile" layoutX="127.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="40.0" prefWidth="40.0" styleClass="buttonPackage" stylesheets="@css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="125.0" layoutY="122.0">
+                                 <Image url="icons/folder1.png" />
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <TextField fx:id="secondFileText" layoutX="33.0" layoutY="166.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="237.0" />
+                        <Label layoutX="33.0" layoutY="31.0" text="Файл 1" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="firstFileText" layoutX="33.0" layoutY="72.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="237.0" />
+                        <Label layoutX="33.0" layoutY="125.0" text="Файл 2" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btnStart" layoutX="120.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="57.0" prefWidth="48.0" styleClass="buttonInfo" stylesheets="@css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="502.0" layoutY="278.0">
+                                 <Image url="icons/start.png" />
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Месяц">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="monthFileText" layoutX="39.0" layoutY="84.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="22.0" prefWidth="237.0" />
+                        <Button fx:id="btnMonthFile" layoutX="135.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="40.0" prefWidth="40.0" styleClass="buttonInfo" stylesheets="@css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="125.0" layoutY="122.0">
+                                 <image>
+                                    <Image url="icons/folder1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnStart1" layoutX="120.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleButtonClicks" prefHeight="57.0" prefWidth="48.0" styleClass="buttonInfo" stylesheets="@css/style.css">
+                           <graphic>
+                              <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="502.0" layoutY="278.0">
+                                 <image>
+                                    <Image url="icons/start.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                         <ChoiceBox fx:id="months" layoutX="129.0" layoutY="137.0" prefHeight="26.0" prefWidth="144.0" value="Январь">
+                             <items>
+                                 <FXCollections fx:factory="observableArrayList">
+                                     <String fx:value="Январь" />
+                                     <String fx:value="Февраль" />
+                                     <String fx:value="Март" />
+                                     <String fx:value="Апрель" />
+                                     <String fx:value="Май" />
+                                     <String fx:value="Июнь" />
+                                     <String fx:value="Июль" />
+                                     <String fx:value="Август" />
+                                     <String fx:value="Сентябрь" />
+                                     <String fx:value="Октябрь" />
+                                     <String fx:value="Ноябрь" />
+                                     <String fx:value="Декабрь" />
+                                 </FXCollections>
+                             </items>
+                         </ChoiceBox>
+                        <Label layoutX="43.0" layoutY="140.0" text="Месяц" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
